@@ -6,13 +6,19 @@
 //  Copyright © 2018 deepanshugautam. All rights reserved.
 //
 
-import UIKit
+import ReactiveSwift
+import Result
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let inputArray = [7,4,2,8,1]
+        let signalProducer = SignalProducer<Int, NoError>.init(inputArray)
+        signalProducer
+            .reduce(0) { initial, next in initial + next }
+            .startWithValues { print($0) }
     }
 
 
