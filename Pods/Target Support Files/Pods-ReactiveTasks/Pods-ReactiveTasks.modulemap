@@ -1,0 +1,6 @@
+framework module Pods_ReactiveTasks {
+  umbrella header "Pods-ReactiveTasks-umbrella.h"
+
+  export *
+  module * { export * }
+}
