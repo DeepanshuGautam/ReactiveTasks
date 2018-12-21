@@ -5,14 +5,18 @@
 //  Created by deepanshugautam on 2018/12/19.
 //  Copyright © 2018 deepanshugautam. All rights reserved.
 //
-
-import UIKit
+import ReactiveCocoa
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        button.reactive.controlEvents(.touchUpInside).observeValues { name in
+            print("touchUpInside")
+        }
     }
 
 
