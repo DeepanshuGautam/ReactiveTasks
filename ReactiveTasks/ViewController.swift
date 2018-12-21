@@ -6,13 +6,17 @@
 //  Copyright © 2018 deepanshugautam. All rights reserved.
 //
 
-import UIKit
+import ReactiveSwift
+import Result
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let inputValues = ["ios", "mobile", "android", "mercari", "tokyo"]
+        let signalProducer = SignalProducer<String, NoError>.init(inputValues)
+        signalProducer.startWithValues { print($0) }
     }
 
 
