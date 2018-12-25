@@ -6,13 +6,26 @@
 //  Copyright © 2018 deepanshugautam. All rights reserved.
 //
 
-import UIKit
+import ReactiveSwift
+import Result
+import ReactiveCocoa
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let signalProducer = SignalProducer<Int,NoError> { (observer, _) in
+            var value = 0
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                observer.send(value: value)
+                value += 1
+            }
+        }
+
+        label.reactive.text <~ signalProducer.map { String($0) }
     }
 
 
